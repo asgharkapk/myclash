@@ -1,0 +1,3659 @@
+global-client-fingerprint: chrome
+
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7894
+
+allow-lan: true
+tcp-concurrent: true
+enable-process: true
+find-process-mode: strict
+ipv6: true
+log-level: debug
+geo-auto-update: true
+geo-update-interval: 168
+secret: ""
+bind-address: "*"
+unified-delay: false
+disable-keep-alive: false
+keep-alive-idle: 30
+keep-alive-interval: 30
+
+profile:
+  name: My Custom Clash Profile
+  version: 1
+  author: test
+  store-selected: true
+  store-fake-ip: true
+
+dns:
+  enable: true
+  ipv6: true
+  respect-rules: false
+  prefer-h3: true
+  cache-algorithm: arc
+  use-system-hosts: true
+  use-host: true
+  enhanced-mode: fake-ip
+  fake-ip-filter-mode: blacklist
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.localdomain"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.home.arpa"
+    - time.*.com
+    - ntp.*.com
+    - "*.ir"
+
+  default-nameserver:
+    - 8.8.8.8
+    - 8.8.4.4
+  nameserver:
+    - 1.1.1.1
+    - 1.0.0.1
+  direct-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+  proxy-server-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8    
+    - https://cloudflare-dns.com/dns-query
+    - tls://one.one.one.one
+    - one.one.one.one
+    - https://doh.pub/dns-query
+    - tls://doh.pub
+    - doh.pub
+    - 2606:4700:4700::1111
+    - 2606:4700:4700::1001
+    - 2001:4860:4860::8888
+    - 2001:4860:4860::8844
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, 8080, 8880, 2052, 2082, 2086, 2095]
+    TLS:
+      ports: [443, 8443, 2053, 2083, 2087, 2096]
+
+tun:
+  enable: true
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  auto-redir: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+
+rule-providers:
+  category_public_tracker:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/category-public-tracker.yaml
+    interval: 86400
+    path: ./ruleset/category_public_tracker.yaml
+  iran_ads:
+    type: http
+    behavior: domain
+    url: https://github.com/bootmortis/iran-hosted-domains/releases/latest/download/clash_rules_ads.yaml
+    interval: 86400
+    path: ./ruleset/iran_ads.yaml
+  PersianBlocker:
+    type: http
+    behavior: domain
+    url: https://github.com/MasterKia/iran-hosted-domains/releases/latest/download/clash_rules_ads.yaml
+    path: ./ruleset/PersianBlocker.yaml
+    interval: 86400
+  youtube:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/youtube.yaml
+    interval: 86400
+    path: ./ruleset/youtube.yaml
+  ACLyoutube:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/YouTube.yaml
+    interval: 86400
+    path: ./ruleset/ACLyoutube.yaml
+  telegram:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/telegram.yaml
+    interval: 86400
+    path: ./ruleset/telegram.yaml
+  twitch:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/twitch.yaml
+    interval: 86400
+    path: ./ruleset/twitch.yaml
+  censor:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/main/censor.yaml
+    interval: 86400
+    path: ./ruleset/censor.yaml
+  local_ips:
+    type: http
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/local-ips.yaml
+    interval: 86400
+    path: ./ruleset/local_ips.yaml
+  private:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/private.yaml
+    interval: 86400
+    path: ./ruleset/private.yaml
+  category_ir:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/category-ir.yaml
+    interval: 86400
+    path: ./ruleset/category_ir.yaml
+  iran:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/main/iran.yaml
+    interval: 86400
+    path: ./ruleset/iran.yaml
+  steam:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/main/steam.yaml
+    interval: 86400
+    path: ./ruleset/steam.yaml
+  game:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/refs/heads/main/game.yaml
+    interval: 86400
+    path: ./ruleset/game.yaml
+  category-games:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/category-games.yaml
+    interval: 86400
+    path: ./ruleset/category-games.yaml
+  ir:
+    type: http
+    format: yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/ir.yaml
+    path: ./ruleset/ir.yaml
+    interval: 86400
+  C4Uprivate:
+    type: http
+    format: yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/private.yaml
+    path: ./ruleset/C4Uprivate.yaml
+    interval: 86400
+  apps:
+    type: http
+    format: yaml
+    behavior: classical
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/apps.yaml
+    path: ./ruleset/apps.yaml
+    interval: 86400
+  ircidr:
+    type: http
+    format: yaml
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/ircidr.yaml
+    path: ./ruleset/ircidr.yaml
+    interval: 86400
+  irasn:
+    type: http
+    format: yaml
+    behavior: classical
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/irasn.yaml
+    path: ./ruleset/irasn.yaml
+    interval: 86400
+  arvancloud:
+    type: http
+    format: yaml
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/arvancloud.yaml
+    path: ./ruleset/arvancloud.yaml
+    interval: 86400
+  derakcloud:
+    type: http
+    format: yaml
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/derakcloud.yaml
+    path: ./ruleset/derakcloud.yaml
+    interval: 86400
+  iranserver:
+    type: http
+    format: yaml
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/iranserver.yaml
+    path: ./ruleset/iranserver.yaml
+    interval: 86400
+  parspack:
+    type: http
+    format: yaml
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/parspack.yaml
+    path: ./ruleset/parspack.yaml
+    interval: 86400
+  malware:
+    type: http
+    format: yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/malware.yaml
+    path: ./ruleset/malware.yaml
+    interval: 86400
+  phishing:
+    type: http
+    format: yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/phishing.yaml
+    path: ./ruleset/phishing.yaml
+    interval: 86400
+  cryptominers:
+    type: http
+    format: yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/cryptominers.yaml
+    path: ./ruleset/cryptominers.yaml
+    interval: 86400
+  ads:
+    type: http
+    format: yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/refs/heads/release/category-ads-all.yaml
+    path: ./ruleset/ads.yaml
+    interval: 86400
+  DownloadManagers:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/refs/heads/main/DownloadManagers.yaml
+    interval: 86400
+    path: ./ruleset/DownloadManagers.yaml
+  BanProgramAD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/BanProgramAD.yaml
+    interval: 86400
+    path: ./ruleset/BanProgramAD.yaml
+  BanAD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/BanAD.yaml
+    interval: 86400
+    path: ./ruleset/BanAD.yaml
+  PrivateTracker:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/PrivateTracker.yaml
+    interval: 86400
+    path: ./ruleset/PrivateTracker.yaml
+  BanEasyList:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/BanEasyList.yaml
+    interval: 86400
+    path: ./ruleset/BanEasyList.yaml
+  Download:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/Download.yaml
+    interval: 86400
+    path: ./ruleset/Download.yaml
+  GameDownload:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/GameDownload.yaml
+    interval: 86400
+    path: ./ruleset/GameDownload.yaml
+  SteamRegionCheck:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/SteamRegionCheck.yaml
+    interval: 86400
+    path: ./ruleset/SteamRegionCheck.yaml
+  Xbox:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/Xbox.yaml
+    interval: 86400
+    path: ./ruleset/Xbox.yaml
+  YouTubeMusic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/YouTubeMusic.yaml
+    interval: 86400
+    path: ./ruleset/YouTubeMusic.yaml
+  10iumYouTube:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/YouTube.yaml
+    interval: 86400
+    path: ./ruleset/10iumYouTube.yaml
+  Ponzi:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/Ponzi.yaml
+    interval: 86400
+    path: ./ruleset/Ponzi.yaml
+  warninglist:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/warning-list.yaml
+    interval: 86400
+    path: ./ruleset/warninglist.yaml
+  google:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/google.yaml
+    interval: 86400
+    path: ./ruleset/google.yaml
+  google-play:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/google-play.yaml
+    interval: 86400
+    path: ./ruleset/google-play.yaml
+  xiaomi-ads:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/xiaomi-ads.yaml
+    interval: 86400
+    path: ./ruleset/xiaomi-ads.yaml
+  xiaomi_block_list:
+    type: http
+    format: yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/clash_rules/refs/heads/main/xiaomi_block_list.yaml
+    path: ./ruleset/xiaomi_block_list.yaml
+    interval: 86400
+  xiaomi_white_list:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/refs/heads/main/xiaomi_white_list.yaml
+    path: ./ruleset/xiaomi_white_list.yaml
+    interval: 86400
+  cloudflare:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/cloudflare.yaml
+    interval: 86400
+    path: ./ruleset/cloudflare.yaml
+  github:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/github.yaml
+    interval: 86400
+    path: ./ruleset/github.yaml
+  whatsapp:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/generated/whatsapp.yaml
+    interval: 86400
+    path: ./ruleset/whatsapp.yaml
+  LiteAds:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/refs/heads/main/LiteAds.yaml
+    path: ./ruleset/LiteAds.yaml
+    interval: 86400
+  discord:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/refs/heads/main/discord.yaml
+    path: ./ruleset/discord.yaml
+    interval: 86400
+  instagram:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/instagram.yaml
+    interval: 86400
+    path: ./ruleset/instagram.yaml
+  category-ai:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/category-ai-!cn.yaml
+    interval: 86400
+    path: ./ruleset/category-ai.yaml
+  windows:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/clash_rules/refs/heads/main/windows.yaml
+    path: ./ruleset/windows.yaml
+    interval: 86400
+  C4Utwitter:
+    type: http
+    format: yaml
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/twitter.yaml
+    path: ./ruleset/C4Utwitter.yaml
+    interval: 86400
+  mihTwitter:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/Twitter.yaml
+    path: ./ruleset/mihTwitter.yaml
+    interval: 86400
+  Domtwitter:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/twitter.yaml
+    interval: 86400
+    path: ./ruleset/Domtwitter.yaml
+  spotifyads:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/spotify-ads.yaml
+    interval: 86400
+    path: ./ruleset/spotifyads.yaml
+  DomainSpotify:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/V2rayDomains2Clash/refs/heads/generated/spotify.yaml
+    interval: 86400
+    path: ./ruleset/DomainSpotify.yaml
+  mihspotify:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/10ium/mihomo_rule/refs/heads/main/list/Spotify.yaml
+    interval: 86400
+    path: ./ruleset/mihSpotify.yaml
+  IranAds:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/IranAds.yaml
+    interval: 86400
+    path: ./ruleset/IranAds.yaml
+  ACLgoogle:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/google.yaml
+    interval: 86400
+    path: ./ruleset/ACLgoogle.yaml
+  reddit:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/reddit.yaml
+    interval: 86400
+    path: ./ruleset/reddit.yaml
+  ACLtelegram:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/telegram.yaml
+    interval: 86400
+    path: ./ruleset/ACLtelegram.yaml
+  openai:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/OpenAi.yaml
+    interval: 86400
+    path: ./ruleset/openai.yaml
+  ACLTwitter:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/Twitter.yaml
+    interval: 86400
+    path: ./ruleset/ACLTwitter.yaml
+  ACLdiscord:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/discord.yaml
+    interval: 86400
+    path: ./ruleset/ACLdiscord.yaml
+  ACLsteam:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/steam.yaml
+    interval: 86400
+    path: ./ruleset/ACLsteam.yaml
+  ACLtwitch:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/twitch.yaml
+    interval: 86400
+    path: ./ruleset/ACLtwitch.yaml
+  ACLinsta:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/Instagram.yaml
+    interval: 86400
+    path: ./ruleset/ACLinsta.yaml
+  facebook:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/facebook.yaml
+    interval: 86400
+    path: ./ruleset/facebook.yaml
+  Netflix:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/Netflix.yaml
+    interval: 86400
+    path: ./ruleset/Netflix.yaml
+  NetflixIP:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/NetflixIP.yaml
+    interval: 86400
+    path: ./ruleset/NetflixIP.yaml
+  ACLSpotify:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/Spotify.yaml
+    interval: 86400
+    path: ./ruleset/ACLSpotify.yaml
+  TikTok:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/TikTok.yaml
+    interval: 86400
+    path: ./ruleset/TikTok.yaml
+  Dota2:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/Dota2.yaml
+    interval: 86400
+    path: ./ruleset/Dota2.yaml
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/BanEasyListChina.yaml
+    interval: 86400
+    path: ./ruleset/BanEasyListChina.yaml
+  ACLBanEasyList:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/BanEasyList.yaml
+    interval: 86400
+    path: ./ruleset/ACLBanEasyList.yaml
+  ACLBanAD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/BanAD.yaml
+    interval: 86400
+    path: ./ruleset/ACLBanAD.yaml
+  BanEasyPrivacy:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/asgharkapk/IranACL/refs/heads/main/Rulests/IRANyml/BanEasyPrivacy.yaml
+    interval: 86400
+    path: ./ruleset/BanEasyPrivacy.yaml
+
+proxy-providers:
+
+  proxylist0:
+    type: http
+    url: https://raw.githubusercontent.com/mahdibland/SSAggregator/master/sub/sub_merge_yaml.yml
+    interval: 7200
+    include-all: true
+    path: ./myclash/mahdiblandEternity.txt_0.yml
+
+  proxylist9:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no9.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no9.txt_0.yml
+  proxylist1:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no1.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no1.txt_0.yml
+  proxylist10:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no10.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no10.txt_0.yml
+  proxylist2:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no2.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no2.txt_0.yml
+  proxylist3:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no3.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no3.txt_0.yml
+
+  proxylist4:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no4.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no4.txt_0.yml
+  proxylist5:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no5.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no5.txt_0.yml
+  proxylist6:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no6.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no6.txt_0.yml
+  proxylist7:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no7.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no7.txt_0.yml
+  proxylist8:
+    type: http
+    url: https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/V2RAY_SUB/refs/heads/main/v2ray_configs_no8.txt
+    interval: 7200
+    include-all: true
+    path: ./myclash/v2ray_configs_no8.txt_0.yml
+
+
+proxies:
+- name: "dns-out"
+  type: dns
+- name: "UDP_IPv4_DIRECT"
+  type: direct
+  udp: true
+  ip-version: ipv4
+- name: "UDP_IPv6_DIRECT"
+  type: direct
+  udp: true
+  ip-version: ipv6
+- name: "TCP_IPv4_DIRECT"
+  type: direct
+  udp: false
+  ip-version: ipv4
+- name: "TCP_IPv6_DIRECT"
+  type: direct
+  udp: false
+  ip-version: ipv6
+  
+proxy-groups:
+
+  - name: 🌐Proxy
+    type: select
+    icon: https://www.svgrepo.com/show/439191/http-2.svg
+    proxies:
+      - 🔃round-robin
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - ♻️gstatic
+      - ☁️cloudflare
+      - 🔓Direct
+      - ⛔Block
+      - 🔐consistent-hashing
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+
+  - name: 🦽Manual
+    type: select
+    icon: https://www.svgrepo.com/show/489275/web-select.svg
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+
+  - name: 🦽Launam
+    type: select
+    icon: https://www.svgrepo.com/show/489275/web-select.svg
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+      
+  - name: 🏁Countries
+    type: select
+    icon: https://www.svgrepo.com/download/245796/geography-map.svg
+    proxies:
+      - 🇬🇧UK
+      - 🇭🇰HongKong
+      - 🇯🇵Japan
+      - 🇺🇸USA
+      - 🇨🇳Taiwan
+      - 🇸🇬Singapore
+      - 🇰🇷Korea
+      - 🇩🇪Germany
+      - 🇫🇷France
+      - 🇳🇱Netherlands
+      - 🇮🇳India
+      - 🇨🇦Canada
+      - 🇷🇺Russia
+      - 🇦🇺Australia
+      - 🇲🇾Malaysia
+      - 🇹🇭Thailand
+      - 🇵🇭Philippines
+      - 🇻🇳Vietnam
+      - 🇹🇷Turkey
+      - 🇧🇷Brazil
+      - 🇸🇦SaudiArabia
+      - 🇿🇦SouthAfrica
+      - 🇦🇪UAE
+      - 🇲🇽Mexico
+      - 🇱🇹Lithuania
+      - 🇲🇩Moldova
+      - 🇵🇱Poland
+      - 🇸🇪Sweden
+      - 🇮🇷Iran
+      - 🇪🇸Spain
+      - 🇨🇳China
+      - 🇩🇰Denmark
+      - 🇮🇸Iceland
+      - 🇺🇦Ukraine
+      - 🏳️‍🌈RELAY
+      - 🇨🇭Switzerland
+      - 🇳🇴Norway
+      - 🇫🇮Finland
+      - 🇧🇪Belgium
+      - 🇵🇹Portugal
+      - 🇮🇹Italy
+      - 🇨🇱Chile
+      - 🇦🇷Argentina
+      - 🇳🇿NewZealand
+      - 🇮🇩Indonesia
+      - 🌍Others
+
+  - name: 📘Facebook🎯
+    type: select
+    icon: https://www.svgrepo.com/show/343553/facebook-network-communication-internet-interaction.svg
+    proxies:
+      - ⛔Block
+      - 🔓Direct
+      - 🌐Proxy
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🛑Advertisements
+    type: select
+    icon: https://www.svgrepo.com/show/93261/click-ad.svg
+    proxies:
+      - 🩸Drop
+      - ⛔Block
+      - 🔓Direct
+      - 🌐Proxy
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - ⛓️‍💥SkipRules
+  - name: 🛡️PrivacyTrackers
+    type: select
+    icon: https://www.svgrepo.com/show/453947/hide.svg
+    proxies:
+      - ⛔Block
+      - 🔓Direct
+      - 🌐Proxy
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🦠SECURITY
+    type: select
+    icon: https://www.svgrepo.com/show/406633/microbe.svg
+    proxies:
+      - ⛔Block
+      - 🔓Direct
+      - 🌐Proxy
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🖥️Lan
+    type: select
+    icon: https://www.svgrepo.com/show/187321/networking-server.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🇮🇷IranWebsites
+    type: select
+    icon: https://www.svgrepo.com/show/405513/flag-for-flag-iran.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: </>GIT🎯
+    type: select
+    icon: https://www.svgrepo.com/show/439173/git.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮Dota2.exe🎯
+    type: select
+    icon: https://www.citypng.com/public/uploads/preview/hd-dota-2-official-logo-png-701751694788589vbfyq561nz.png
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮Dota2🎯
+    type: select
+    icon: https://www.citypng.com/public/uploads/preview/hd-dota-2-official-logo-png-701751694788589vbfyq561nz.png
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🚂Steam.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/452107/steam.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🚂Steam🎯
+    type: select
+    icon: https://www.svgrepo.com/show/452107/steam.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🤬censorMovie🎯
+    type: select
+    icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS33HISPQ3YqM26dlS3m6IfpwJ3wgudtCZ3cQ&s
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🕹️VideoGame🎯
+    type: select
+    icon: https://www.svgrepo.com/show/400887/videogame.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 📲Xiaomi🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331655/xiaomi.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🪟Windows🎯
+    type: select
+    icon: https://www.svgrepo.com/show/52775/windows.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 📥Download🎯
+    type: select
+    icon: https://www.svgrepo.com/show/411366/download.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 💻AnyDesk🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331289/anydesk.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 💬Whatsapp🎯
+    type: select
+    icon: https://www.svgrepo.com/show/452133/whatsapp.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing
+      - 🔃round-robin
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔀Restream🎯
+    type: select
+    icon: https://www.svgrepo.com/show/402073/letter-r.svg
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔫CS2.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🔓Direct
+      - 🌐Proxy
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 👧BPSR.exe🎯
+    type: select
+    #icon: https://www.svgrepo.com/show/331337/cloudflare.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🛣️FLClash.exe🎯
+    type: select
+    #icon: https://www.svgrepo.com/show/331337/cloudflare.svg
+    proxies:
+      - ⤵️FirstPing
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ☁️Cloudflare🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331337/cloudflare.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 📱Google🎯
+    type: select
+    icon: https://www.svgrepo.com/show/382723/google.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎛NVIDIA🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331511/nvidia.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 📺YouTube🎯
+    type: select
+    icon: https://www.svgrepo.com/show/416500/youtube-circle-logo.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎧YTmusic🎯
+    type: select
+    icon: https://www.svgrepo.com/show/416500/youtube-circle-logo.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 📙Reddit🎯
+    type: select
+    icon: https://www.svgrepo.com/show/354270/reddit-icon.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔵Telegram🎯
+    type: select
+    icon: https://www.svgrepo.com/show/354443/telegram.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🤖Grok🎯
+    type: select
+    icon: https://www.svgrepo.com/show/535603/robot.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🤖OpenAI🎯
+    type: select
+    icon: https://www.svgrepo.com/show/306500/openai.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🤖AI🎯
+    type: select
+    icon: https://www.svgrepo.com/show/486520/ai.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🐦Twitter🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331618/twitter.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 📸Instagram🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331440/instagram.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎥Netflix🎯
+    type: select
+    icon: https://www.svgrepo.com/show/303196/netflix-2-logo.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎶Spotify🎯
+    type: select
+    icon: https://www.svgrepo.com/show/475684/spotify-color.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎬TikTok🎯
+    type: select
+    icon: https://www.svgrepo.com/show/303260/tiktok-logo-logo.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing   
+      - 🔃round-robin   
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 💼LinkedIn🎯
+    type: select
+    icon: https://www.svgrepo.com/show/452051/linkedin.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing     
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮Blizzard🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331321/blizzard.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing   
+      - 🔃round-robin 
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ⚫EpicGames🎯
+    type: select
+    icon: https://www.svgrepo.com/show/306007/epicgames.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing      
+      - 🔃round-robin   
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮RiotGames🎯
+    type: select
+    icon: https://www.svgrepo.com/show/306668/riotgames.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing    
+      - 🔃round-robin   
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮BattleNet🎯
+    type: select
+    icon: https://www.svgrepo.com/show/305784/battlenet.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing      
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🟩kick🎯
+    type: select
+    icon: https://www.svgrepo.com/show/382727/kickstarter-kick-starter-crowdfunding.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing    
+      - 🔃round-robin     
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 👾Twitch🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331620/twitch-v2.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing    
+      - 🔃round-robin   
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 📡streamlabs🎯
+    type: select
+    icon: https://www.svgrepo.com/show/519482/streamlabs.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing 
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎦OBS.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/426784/obs.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing      
+      - 🔃round-robin     
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ⚫EpicGames.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/443039/brand-epicgames.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing     
+      - 🔃round-robin     
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮Blizzard.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331321/blizzard.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing     
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮LOL.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/458866/rofl.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing      
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮VALORANT.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/424907/valorant-logo-play.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing    
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮BattleNet.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/305784/battlenet.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing     
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🗣️Discord🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331368/discord-v2.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing    
+      - 🔃round-robin  
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🦁Brave.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331328/brave.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing     
+      - 🔃round-robin    
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🟢Edge.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/349349/edge.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing      
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ⭕Opera.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331521/opera.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🦊FireFox.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/331521/opera.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ©️Chrome.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/475640/chrome-color.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🦽Launam
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔫Fortnite.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/504355/fortnite.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🚗GTAV.exe🎯
+    type: select
+    icon: https://www.svgrepo.com/show/303623/gta-grand-theft-auto-logo.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing      
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔫CODWarzone.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🧨CODColdWar.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔫CODModernWarfare.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🏹ApexLegends.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎯Valorant.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🕹️CSGO.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🎮Overwatch2.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🧙LeagueLoL.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ⚔️Smite.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🏁ForzaHorizon5.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🏎️ForzaMotorsport.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🚗NFSHeat.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🚗NFSUnbound.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🏎️F1-23.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🛡️EldenRing.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🐺Witcher3.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🤖Cyberpunk2077.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🐉SkyrimSE.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ☢️Fallout4.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🚀Starfield.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🌌Genshin.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ⚽FIFA.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: ⚽eFootball.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🏡TheSims4.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🧱MinecraftJava.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🧱MinecraftBedrock.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔫Rainbow6.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🔫Tarkov.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🛩️BF2042.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🛩️BFV.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🛩️BF1.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 👻RE4.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🏰REVillage.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🧟DeadByDaylight.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🧟TLouPC.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🦖ARK.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🌄DayZ.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🏙️RDR2.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🛡️ACValhalla.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🗡️ACOdyssey.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+  - name: 🪓ACMirage.exe🎯
+    type: select
+    #icon 
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - ⤵️FirstPing
+      - 🦽Manual
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
+      - 🕎sticky-sessions
+      - 🏁Countries
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+      
+  - name: 🎯Destinations
+    type: select
+    #icon 
+    proxies:
+      - 🖥️Lan
+      - 🇮🇷IranWebsites
+      - 🛑Advertisements
+      - 🛡️PrivacyTrackers
+      - 🦠SECURITY
+      - </>GIT🎯
+      - 🎮Dota2.exe🎯
+      - 🚂Steam.exe🎯
+      - 🎮Dota2🎯
+      - 🚂Steam🎯
+      - 📘Facebook🎯
+      - 🎛NVIDIA🎯
+      - 📺YouTube🎯
+      - 🎧YTmusic🎯
+      - 📱Google🎯
+      - 📙Reddit🎯
+      - 🔵Telegram🎯
+      - 🤖OpenAI🎯
+      - 🐦Twitter🎯
+      - 🤖Grok🎯
+      - 👾Twitch🎯
+      - ☁️Cloudflare🎯
+      - 📸Instagram🎯
+      - 🎥Netflix🎯
+      - 🎶Spotify🎯
+      - 🎬TikTok🎯
+      - 💼LinkedIn🎯
+      - 📥Download🎯
+      - 💻AnyDesk🎯
+      - 🤖AI🎯
+      - 💬Whatsapp🎯
+      - 🤬censorMovie🎯
+      - 🕹️VideoGame🎯
+      - 📲Xiaomi🎯
+      - 🪟Windows🎯
+      - 🎦OBS.exe🎯
+      - 🟩kick🎯
+      - 🔀Restream🎯
+      - 🎮Blizzard🎯
+      - 📡streamlabs🎯
+      - ⚫EpicGames🎯
+      - 🎮RiotGames🎯
+      - 🎮BattleNet🎯
+      - 🗣️Discord🎯
+      - 🗣️Discord🎯
+      - EXE🎯Dests
+  - name: EXE🎯Dests
+    type: select
+    #icon 
+    proxies:
+      - ⚫EpicGames.exe🎯
+      - 🎮Blizzard.exe🎯
+      - 🎮LOL.exe🎯
+      - 🎮VALORANT.exe🎯
+      - 🎮BattleNet.exe🎯
+      - 🦁Brave.exe🎯
+      - 🟢Edge.exe🎯
+      - ⭕Opera.exe🎯
+      - 🦊FireFox.exe🎯
+      - ©️Chrome.exe🎯
+      - 🔫Fortnite.exe🎯
+      - 🚗GTAV.exe🎯
+      - 🔫CODWarzone.exe🎯
+      - 🧨CODColdWar.exe🎯
+      - 🔫CODModernWarfare.exe🎯
+      - 🏹ApexLegends.exe🎯
+      - 🎯Valorant.exe🎯
+      - 🔫CS2.exe🎯
+      - 👧BPSR.exe🎯
+      - 🛣️FLClash.exe🎯
+      - 🕹️CSGO.exe🎯
+      - 🎮Overwatch2.exe🎯
+      - 🧙LeagueLoL.exe🎯
+      - ⚔️Smite.exe🎯
+      - 🏁ForzaHorizon5.exe🎯
+      - 🏎️ForzaMotorsport.exe🎯
+      - 🚗NFSHeat.exe🎯
+      - 🚗NFSUnbound.exe🎯
+      - 🏎️F1-23.exe🎯
+      - 🛡️EldenRing.exe🎯
+      - 🐺Witcher3.exe🎯
+      - 🤖Cyberpunk2077.exe🎯
+      - 🐉SkyrimSE.exe🎯
+      - ☢️Fallout4.exe🎯
+      - 🚀Starfield.exe🎯
+      - 🌌Genshin.exe🎯
+      - ⚽FIFA.exe🎯
+      - ⚽eFootball.exe🎯
+      - 🏡TheSims4.exe🎯
+      - 🧱MinecraftJava.exe🎯
+      - 🧱MinecraftBedrock.exe🎯
+      - 🔫Rainbow6.exe🎯
+      - 🔫Tarkov.exe🎯
+      - 🛩️BF2042.exe🎯
+      - 🛩️BFV.exe🎯
+      - 🛩️BF1.exe🎯
+      - 👻RE4.exe🎯
+      - 🏰REVillage.exe🎯
+      - 🧟DeadByDaylight.exe🎯
+      - 🧟TLouPC.exe🎯
+      - 🦖ARK.exe🎯
+      - 🌄DayZ.exe🎯
+      - 🏙️RDR2.exe🎯
+      - 🛡️ACValhalla.exe🎯
+      - 🗡️ACOdyssey.exe🎯
+      - 🪓ACMirage.exe🎯
+  - name: ♻️gstatic
+    type: url-test
+    #icon 
+    url: https://www.gstatic.com/generate_204
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+  - name: ☁️cloudflare
+    type: url-test
+    icon: https://www.svgrepo.com/show/353564/cloudflare.svg
+    url: https://cp.cloudflare.com/generate_204
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+
+  - name: 🇭🇰HongKong
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇭🇰|港|HK|hk|HongKong|hongkong"
+  - name: 🇯🇵Japan
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇯🇵|日本|东京|大阪|JP|Japan"
+  - name: 🇺🇸USA
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇺🇸|美|US|USA|UnitedStates|洛杉矶|圣何塞|西雅图|芝加哥|达拉斯|凤凰城|硅谷|Portland|Seattle|Chicago|Dallas"
+  - name: 🇨🇳Taiwan
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇹🇼|TW|Taiwan|台|台北"
+  - name: 🇸🇬Singapore
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇸🇬|SG|Singapore|新加坡|狮城"
+  - name: 🇰🇷Korea
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇰🇷|KR|Korea|韩国|首尔|Seoul"
+  - name: 🇩🇪Germany
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇩🇪|DE|Germany|德国|法兰克福|慕尼黑|柏林|Frankfurt|Berlin|Munich"
+  - name: 🇬🇧UK
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇬🇧|GB|UK|England|英国|伦敦|London"
+  - name: 🇫🇷France
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇫🇷|FR|France|法国|巴黎|Marseille|Lyon"
+  - name: 🇳🇱Netherlands
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇳🇱|NL|Netherlands|荷兰|阿姆斯特丹|Amsterdam"
+  - name: 🇮🇳India
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇮🇳|IN|India|印度|孟买|Mumbai|Delhi|班加罗尔|Bangalore"
+  - name: 🇨🇦Canada
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇨🇦|CA|Canada|加拿大|Toronto|温哥华|Vancouver|Montreal"
+  - name: 🇷🇺Russia
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇷🇺|RU|Russia|俄罗斯|莫斯科|Moscow|圣彼得堡|StPetersburg"
+  - name: 🇦🇺Australia
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇦🇺|AU|Australia|澳大利亚|悉尼|墨尔本|Sydney|Melbourne"
+  - name: 🇲🇾Malaysia
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇲🇾|MY|Malaysia|马来西亚|吉隆坡|KualaLumpur"
+  - name: 🇹🇭Thailand
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇹🇭|TH|Thailand|泰国|曼谷|Bangkok"
+  - name: 🇵🇭Philippines
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇵🇭|PH|Philippines|菲律宾|马尼拉|Manila"
+  - name: 🇻🇳Vietnam
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇻🇳|VN|Vietnam|越南|胡志明|Hanoi|HoChiMinh"
+  - name: 🇹🇷Turkey
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇹🇷|TR|Turkey|土耳其|伊斯坦布尔|Istanbul|Ankara"
+  - name: 🇧🇷Brazil
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇧🇷|BR|Brazil|巴西|圣保罗|SaoPaulo|Rio"
+  - name: 🇸🇦SaudiArabia
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇸🇦|SA|Saudi|阿拉伯|利雅得|Riyadh|Jeddah"
+  - name: 🇿🇦SouthAfrica
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇿🇦|ZA|SouthAfrica|南非|约翰内斯堡|开普敦|CapeTown"
+  - name: 🇦🇪UAE
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇦🇪|AE|UAE|阿联酋|迪拜|Dubai|AbuDhabi"
+  - name: 🇲🇽Mexico
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇲🇽|MX|Mexico|墨西哥|墨西哥城|CDMX"
+  - name: 🇱🇹Lithuania
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇱🇹|LT|Lithuania|立陶宛|Vilnius"
+  - name: 🇲🇩Moldova
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇲🇩|MD|Moldova|摩尔多瓦|Chisinau"
+  - name: 🇵🇱Poland
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇵🇱|PL|Poland|波兰|华沙|Warsaw"
+  - name: 🇸🇪Sweden
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇸🇪|SE|Sweden|瑞典|斯德哥尔摩|Stockholm"
+  - name: 🇮🇷Iran
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇮🇷|IR|Iran|ایران|Tehran|تهران"
+  - name: 🇪🇸Spain
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇪🇸|ES|Spain|西班牙|马德里|Madrid|巴塞罗那|Barcelona"
+  - name: 🇨🇳China
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇨🇳|CN|China|中国|大陆|上海|北京|广州|深圳"
+  - name: 🇮🇸Iceland
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇮🇸|IS|Iceland"
+  - name: 🇩🇰Denmark
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇩🇰|DK|Denmark"
+  - name: 🇺🇦Ukraine
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇺🇦|UA|Ukraine"
+  - name: 🏳️‍🌈RELAY
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "RELAY"
+  - name: 🇨🇭Switzerland
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇨🇭|CH|Switzerland|瑞士|苏黎世|Zurich|Geneva"
+  - name: 🇳🇴Norway
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇳🇴|NO|Norway|挪威|奥斯陆|Oslo"
+  - name: 🇫🇮Finland
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇫🇮|FI|Finland|芬兰|赫尔辛基|Helsinki"
+  - name: 🇧🇪Belgium
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇧🇪|BE|Belgium|比利时|布鲁塞尔|Brussels"
+  - name: 🇵🇹Portugal
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇵🇹|PT|Portugal|葡萄牙|里斯本|Lisbon|Porto"
+  - name: 🇮🇹Italy
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇮🇹|IT|Italy|意大利|米兰|罗马|Milan|Rome"
+  - name: 🇨🇱Chile
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇨🇱|CL|Chile|智利|圣地亚哥|Santiago"
+  - name: 🇦🇷Argentina
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇦🇷|AR|Argentina|阿根廷|布宜诺斯艾利斯|BuenosAires"
+  - name: 🇳🇿NewZealand
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "🇳🇿|NZ|NewZealand|新西兰|奥克兰|Auckland|Wellington"
+  - name: 🇮🇩Indonesia
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+        - proxylist1
+    filter: "🇮🇩|ID|Indonesia"
+  - name: 🌍Others
+    type: url-test
+    url: https://www.facebook.com
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+    filter: "^(?!.*(US|🇺🇸|GB|🇬🇧|JP|🇯🇵|HK|🇭🇰|TW|🇹🇼|SG|🇸🇬|KR|🇰🇷|DE|🇩🇪|FR|🇫🇷|NL|🇳🇱|IN|🇮🇳|CA|🇨🇦|RU|🇷🇺|AU|🇦🇺|MY|🇲🇾|TH|🇹🇭|PH|🇵🇭|VN|🇻🇳|TR|🇹🇷|BR|🇧🇷|SA|🇸🇦|ZA|🇿🇦|AE|🇦🇪|MX|🇲🇽|LT|🇱🇹|MD|🇲🇩|PL|🇵🇱|SE|🇸🇪|IR|🇮🇷|ES|🇪🇸|CN|🇨🇳|IS|🇮🇸|DK|🇩🇰|UA|🇺🇦|RELAY🇨🇭|CH|🇳🇴|NO|🇫🇮|FI|🇧🇪|BE|🇵🇹|PT|🇮🇹|IT|🇨🇱|CL|🇦🇷|AR|🇳🇿|NZ|🇮🇩|ID)).*"
+
+  - name: ⤵️FirstPing
+    type: fallback
+    #icon 
+    url: https://cp.cloudflare.com/generate_204
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+  - name: 🔐consistent-hashing
+    type: load-balance
+    #icon 
+    strategy: consistent-hashing
+    url: https://cp.cloudflare.com/generate_204
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+  - name: 🔃round-robin
+    type: load-balance
+    #icon 
+    strategy: round-robin
+    url: https://cp.cloudflare.com/generate_204
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+  - name: 🕎sticky-sessions
+    type: load-balance
+    #icon 
+    strategy: sticky-sessions
+    url: https://cp.cloudflare.com/generate_204
+    interval: 7200
+    tolerance: 300
+    lazy: false
+    use:
+      - proxylist0
+      - proxylist1
+      - proxylist2
+      - proxylist3
+      - proxylist4
+      - proxylist5
+      - proxylist6
+      - proxylist7
+      - proxylist8
+      - proxylist9
+      - proxylist10
+
+  - name: 🔓Direct
+    type: select
+    icon: https://www.svgrepo.com/show/253512/unlock.svg
+    proxies:
+      - DIRECT
+      - dns-out
+      - UDP_IPv4_DIRECT
+      - TCP_IPv4_DIRECT
+      - UDP_IPv6_DIRECT
+      - TCP_IPv6_DIRECT
+  - name: ⛓️‍💥SkipRules
+    type: select
+    #icon: https://www.svgrepo.com/show/253512/unlock.svg
+    proxies:
+      - PASS
+  - name: ⛔Block
+    type: select
+    icon: https://www.svgrepo.com/download/501832/stop.svg
+    proxies:
+      - REJECT
+  - name: 🩸Drop
+    type: select
+    icon: https://www.svgrepo.com/download/501832/stop.svg
+    proxies:
+      - REJECT-DROP
+  - name: ⚡Online
+    type: select
+    icon: https://www.svgrepo.com/show/475302/online.svg
+    proxies:
+      - 🌐Proxy
+      - 🔓Direct
+      - ⛔Block
+      - 🎯Destinations
+      - 🩸Drop
+      - ⛓️‍💥SkipRules
+
+ntp:
+  enable: true
+  server: time.apple.com
+  port: 123
+  interval: 30
+
+rules:
+  - RULE-SET,BanEasyPrivacy,🛡️PrivacyTrackers
+  - GEOSITE,category-ads-all,🛑Advertisements
+  - RULE-SET,ACLBanAD,🛑Advertisements
+  - RULE-SET,ACLBanEasyList,🛑Advertisements
+  - RULE-SET,BanEasyListChina,🛑Advertisements
+  - RULE-SET,IranAds,🛑Advertisements
+  - RULE-SET,spotifyads,🛑Advertisements
+  - RULE-SET,BanProgramAD,🛑Advertisements
+  - RULE-SET,BanAD,🛑Advertisements
+  - RULE-SET,PrivateTracker,🛑Advertisements
+  - RULE-SET,category_public_tracker,🛑Advertisements
+  - RULE-SET,LiteAds,🛑Advertisements
+  - RULE-SET,iran_ads,🛑Advertisements
+  - RULE-SET,PersianBlocker,🛑Advertisements
+  - RULE-SET,ads,🛑Advertisements
+  - RULE-SET,BanEasyList,🛑Advertisements
+  - RULE-SET,xiaomi-ads,🛑Advertisements
+  - RULE-SET,xiaomi_block_list,🛑Advertisements
+  - RULE-SET,malware,🦠SECURITY
+  - RULE-SET,cryptominers,🦠SECURITY
+  - RULE-SET,phishing,🦠SECURITY
+  - RULE-SET,warninglist,🦠SECURITY
+  - RULE-SET,Ponzi,🦠SECURITY
+  - PROCESS-NAME,BPSR_STEAM.exe,👧BPSR.exe🎯
+  - PROCESS-NAME,FlClash.exe,🛣️FLClash.exe🎯
+  - PROCESS-NAME,FortniteClient-Win64-Shipping.exe,🔫Fortnite.exe🎯
+  - PROCESS-NAME,GTA5.exe,🚗GTAV.exe🎯
+  - PROCESS-NAME,cod.exe,🔫CODWarzone.exe🎯
+  - PROCESS-NAME,BlackOpsColdWar.exe,🧨CODColdWar.exe🎯
+  - PROCESS-NAME,ModernWarfare.exe,🔫CODModernWarfare.exe🎯
+  - PROCESS-NAME,r5apex.exe,🏹ApexLegends.exe🎯
+  - PROCESS-NAME,VALORANT-Win64-Shipping.exe,🎯Valorant.exe🎯
+  - PROCESS-NAME,cs2.exe,🔫CS2.exe🎯
+  - PROCESS-NAME,csgo.exe,🕹️CSGO.exe🎯
+  - PROCESS-NAME,Overwatch.exe,🎮Overwatch2.exe🎯
+  - PROCESS-NAME,League of Legends.exe,🧙LeagueLoL.exe🎯
+  - PROCESS-NAME,Smite.exe,⚔️Smite.exe🎯
+  - PROCESS-NAME,ForzaHorizon5.exe,🏁ForzaHorizon5.exe🎯
+  - PROCESS-NAME,ForzaMotorsport.exe,🏎️ForzaMotorsport.exe🎯
+  - PROCESS-NAME,NFSHeat.exe,🚗NFSHeat.exe🎯
+  - PROCESS-NAME,NeedForSpeedUnbound.exe,🚗NFSUnbound.exe🎯
+  - PROCESS-NAME,F1_23.exe,🏎️F1-23.exe🎯
+  - PROCESS-NAME,eldenring.exe,🛡️EldenRing.exe🎯
+  - PROCESS-NAME,witcher3.exe,🐺Witcher3.exe🎯
+  - PROCESS-NAME,Cyberpunk2077.exe,🤖Cyberpunk2077.exe🎯
+  - PROCESS-NAME,SkyrimSE.exe,🐉SkyrimSE.exe🎯
+  - PROCESS-NAME,Fallout4.exe,☢️Fallout4.exe🎯
+  - PROCESS-NAME,Starfield.exe,🚀Starfield.exe🎯
+  - PROCESS-NAME,GenshinImpact.exe,🌌Genshin.exe🎯
+  - PROCESS-NAME,EASFC24.exe,⚽FIFA.exe🎯
+  - PROCESS-NAME,eFootball.exe,⚽eFootball.exe🎯
+  - PROCESS-NAME,TS4_x64.exe,🏡TheSims4.exe🎯
+  - PROCESS-NAME,javaw.exe,🧱MinecraftJava.exe🎯
+  - PROCESS-NAME,Minecraft.Windows.exe,🧱MinecraftBedrock.exe🎯
+  - PROCESS-NAME,RainbowSix.exe,🔫Rainbow6.exe🎯
+  - PROCESS-NAME,EscapeFromTarkov.exe,🔫Tarkov.exe🎯
+  - PROCESS-NAME,BF2042.exe,🛩️BF2042.exe🎯
+  - PROCESS-NAME,bfv.exe,🛩️BFV.exe🎯
+  - PROCESS-NAME,bf1.exe,🛩️BF1.exe🎯
+  - PROCESS-NAME,re4.exe,👻RE4.exe🎯
+  - PROCESS-NAME,re8.exe,🏰REVillage.exe🎯
+  - PROCESS-NAME,DeadByDaylight.exe,🧟DeadByDaylight.exe🎯
+  - PROCESS-NAME,tlou-i.exe,🧟TLouPC.exe🎯
+  - PROCESS-NAME,ShooterGame.exe,🦖ARK.exe🎯
+  - PROCESS-NAME,DayZ_x64.exe,🌄DayZ.exe🎯
+  - PROCESS-NAME,RDR2.exe,🏙️RDR2.exe🎯
+  - PROCESS-NAME,ACValhalla.exe,🛡️ACValhalla.exe🎯
+  - PROCESS-NAME,ACOdyssey.exe,🗡️ACOdyssey.exe🎯
+  - PROCESS-NAME,ACMirage.exe,🪓ACMirage.exe🎯
+  - PROCESS-NAME,dota2.exe,🎮Dota2.exe🎯
+  - PROCESS-NAME,steam.exe,🚂Steam.exe🎯
+  - PROCESS-NAME,steamwebhelper.exe,🚂Steam.exe🎯
+  - PROCESS-NAME,Battle.net.exe,🎮Blizzard.exe🎯
+  - PROCESS-NAME,EpicGamesLauncher.exe,⚫EpicGames.exe🎯
+  - PROCESS-NAME,LeagueClientUx.exe,🎮LOL.exe🎯
+  - PROCESS-NAME,VALORANT-Win64-Shipping.exe,🎮VALORANT.exe🎯
+  - PROCESS-NAME,Battle.net.exe,🎮BattleNet.exe🎯
+  - PROCESS-NAME,Discord.exe,🗣️Discord🎯
+  - PROCESS-NAME,NVIDIA Overlay.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,Geforce.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,NVIDIA Notification.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,nvidia-smi.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,NVRLA.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,NvBackend.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,nvwmi64.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,NVIDIA Overlay.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,NVIDIA.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,NVIDIA App.exe,🎛NVIDIA🎯
+  - PROCESS-NAME,nvnodejslauncher.exe,🎛NVIDIA🎯
+  - RULE-SET,DownloadManagers,📥Download🎯
+  - RULE-SET,Download,📥Download🎯
+  - DOMAIN-SUFFIX,kick.com,🟩kick🎯
+  - DOMAIN-SUFFIX,restream.io,🔀Restream🎯
+  - DOMAIN-SUFFIX,battle.net,🎮Blizzard🎯
+  - DOMAIN-SUFFIX,streamlabs.com,📡streamlabs🎯
+  - DOMAIN-SUFFIX,epicgames.com,⚫EpicGames🎯
+  - DOMAIN-SUFFIX,unrealengine.com,⚫EpicGames🎯
+  - DOMAIN-SUFFIX,riotgames.com,🎮RiotGames🎯
+  - DOMAIN-SUFFIX,valorant.com,🎮RiotGames🎯
+  - DOMAIN-SUFFIX,lolstatic.com,🎮RiotGames🎯
+  - DOMAIN-SUFFIX,battle.net,🎮BattleNet🎯
+  - DOMAIN-SUFFIX,blizzard.com,🎮BattleNet🎯
+  - DOMAIN-SUFFIX,discord.com,🗣️Discord🎯
+  - DOMAIN-SUFFIX,discord.gg,🗣️Discord🎯
+  - DOMAIN-SUFFIX,discordapp.com,🗣️Discord🎯
+  - RULE-SET,ACLdiscord,🗣️Discord🎯
+  - GEOSITE,discord,🗣️Discord🎯
+  - RULE-SET,discord,🗣️Discord🎯
+  - GEOSITE,nvidia,🎛NVIDIA🎯
+  - GEOSITE,github,</>GIT🎯
+  - GEOSITE,gitlab,</>GIT🎯
+  - PROCESS-NAME,com.github.android,</>GIT🎯
+  - GEOSITE,gitlab,</>GIT🎯
+  - PROCESS-NAME,com.google.android.apps.youtube.music,🎧YTmusic🎯
+  - RULE-SET,YouTubeMusic,🎧YTmusic🎯
+  - PROCESS-NAME,com.google.android.youtube,📺YouTube🎯
+  - RULE-SET,ACLyoutube,📺YouTube🎯
+  - RULE-SET,youtube,📺YouTube🎯
+  - RULE-SET,10iumYouTube,📺YouTube🎯
+  - PROCESS-NAME,com.reddit.frontpage,📙Reddit🎯
+  - RULE-SET,reddit,📙Reddit🎯
+  - RULE-SET,ACLtelegram,🔵Telegram🎯
+  - RULE-SET,telegram,🔵Telegram🎯
+  - PROCESS-NAME,com.openai.chatgpt,🤖OpenAI🎯
+  - GEOSITE,openai,🤖OpenAI🎯
+  - RULE-SET,openai,🤖OpenAI🎯
+  - PROCESS-NAME,Twitter.exe,🐦Twitter🎯
+  - PROCESS-NAME,com.twitter.android,🐦Twitter🎯
+  - RULE-SET,ACLTwitter,🐦Twitter🎯
+  - RULE-SET,C4Utwitter,🐦Twitter🎯
+  - RULE-SET,mihTwitter,🐦Twitter🎯
+  - RULE-SET,Domtwitter,🐦Twitter🎯
+  - DOMAIN-SUFFIX,grok.com,🤖Grok🎯
+  - DOMAIN-SUFFIX,x.ai,🤖Grok🎯
+  - RULE-SET,ACLtwitch,👾Twitch🎯
+  - RULE-SET,twitch,👾Twitch🎯
+  - GEOSITE,cloudflare,☁️Cloudflare🎯
+  - RULE-SET,cloudflare,☁️Cloudflare🎯
+  - PROCESS-NAME,com.instagram.android,📸Instagram🎯
+  - RULE-SET,ACLinsta,📸Instagram🎯
+  - GEOSITE,instagram,📸Instagram🎯
+  - RULE-SET,instagram,📸Instagram🎯
+  - GEOSITE,facebook,📘Facebook🎯
+  - RULE-SET,facebook,📘Facebook🎯
+  - GEOSITE,netflix,🎥Netflix🎯
+  - RULE-SET,Netflix,🎥Netflix🎯
+  - RULE-SET,NetflixIP,🎥Netflix🎯
+  - PROCESS-NAME,com.spotify.music,🎶Spotify🎯
+  - PROCESS-NAME,Spotify.exe,🎶Spotify🎯
+  - RULE-SET,ACLSpotify,🎶Spotify🎯
+  - RULE-SET,DomainSpotify,🎶Spotify🎯
+  - RULE-SET,mihspotify,🎶Spotify🎯
+  - RULE-SET,TikTok,🎬TikTok🎯
+  - GEOSITE,linkedin,💼LinkedIn🎯
+  - DOMAIN-SUFFIX,deepseek.com,🤖AI🎯
+  - DOMAIN-SUFFIX,qwen.ai,🤖AI🎯
+  - RULE-SET,category-ai,🤖AI🎯
+  - RULE-SET,censor,🤬censorMovie🎯
+  - PROCESS-NAME,com.anydesk.anydeskandroid,💻AnyDesk🎯
+  - PROCESS-NAME,AnyDesk.exe,💻AnyDesk🎯
+  - DOMAIN-SUFFIX,anydesk.com,💻AnyDesk🎯
+  - RULE-SET,game,🕹️VideoGame🎯
+  - RULE-SET,category-games,🕹️VideoGame🎯
+  - RULE-SET,GameDownload,🕹️VideoGame🎯
+  - RULE-SET,Xbox,🕹️VideoGame🎯
+  - RULE-SET,xiaomi_white_list,📲Xiaomi🎯
+  - PROCESS-NAME,com.whatsapp,💬Whatsapp🎯
+  - PROCESS-NAME,com.whatsapp.w4b,💬Whatsapp🎯
+  - PROCESS-NAME,WhatsApp.exe,💬Whatsapp🎯
+  - RULE-SET,whatsapp,💬Whatsapp🎯
+  - RULE-SET,windows,🪟Windows🎯
+  - RULE-SET,Dota2,🎮Dota2🎯
+  - DOMAIN-SUFFIX,dota2.com,🎮Dota2🎯
+  - DOMAIN-SUFFIX,steampowered.com,🚂Steam🎯
+  - DOMAIN-SUFFIX,steamcommunity.com,🚂Steam🎯
+  - DOMAIN-SUFFIX,steamstatic.com,🚂Steam🎯
+  - RULE-SET,ACLsteam,🚂Steam🎯
+  - RULE-SET,steam,🚂Steam🎯
+  - RULE-SET,SteamRegionCheck,🚂Steam🎯
+  - GEOSITE,category-ir,🇮🇷IranWebsites
+  - RULE-SET,apps,🇮🇷IranWebsites
+  - RULE-SET,category_ir,🇮🇷IranWebsites
+  - RULE-SET,iran,🇮🇷IranWebsites
+  - RULE-SET,ir,🇮🇷IranWebsites
+  - RULE-SET,ircidr,🇮🇷IranWebsites
+  - RULE-SET,irasn,🇮🇷IranWebsites
+  - RULE-SET,arvancloud,🇮🇷IranWebsites
+  - RULE-SET,derakcloud,🇮🇷IranWebsites
+  - RULE-SET,iranserver,🇮🇷IranWebsites
+  - RULE-SET,parspack,🇮🇷IranWebsites
+  - GEOIP,IR,🇮🇷IranWebsites
+  - GEOSITE,private,🖥️Lan
+  - RULE-SET,C4Uprivate,🖥️Lan
+  - RULE-SET,private,🖥️Lan
+  - PROCESS-NAME,obs64.exe,🎦OBS.exe🎯
+  - PROCESS-NAME,obs-browser-page.exe,🎦OBS.exe🎯
+  - PROCESS-NAME,brave.exe,🦁Brave.exe🎯
+  - PROCESS-NAME,com.brave.browser,🦁Brave.exe🎯
+  - PROCESS-NAME,msedge.exe,🟢Edge.exe🎯
+  - PROCESS-NAME,Telegram.exe,🔵Telegram🎯
+  - PROCESS-NAME,org.telegram.messenger,🔵Telegram🎯
+  - PROCESS-NAME,org.telegram.messenger.web,🔵Telegram🎯
+  - PROCESS-NAME,org.telegram.messenger.beta,🔵Telegram🎯
+  - PROCESS-NAME,chrome.exe,©️Chrome.exe🎯
+  - PROCESS-NAME,com.android.chrome,©️Chrome.exe🎯
+  - PROCESS-NAME,opera.exe,⭕Opera.exe🎯
+  - PROCESS-NAME,firefox.exe,🦊FireFox.exe🎯
+  - PROCESS-NAME,opera_crashreporter.exe,⭕Opera.exe🎯
+  - GEOSITE,google,📱Google🎯
+  - RULE-SET,ACLgoogle,📱Google🎯
+  - RULE-SET,google,📱Google🎯
+  - RULE-SET,google-play,📱Google🎯
+  - PROCESS-NAME,com.android.vending,📱Google🎯
+  - PROCESS-NAME,com.google.android.gms,📱Google🎯
+  - PROCESS-NAME,com.facebook.services,📘Facebook🎯
+  - MATCH,⚡Online
