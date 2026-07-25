@@ -3598,6 +3598,7 @@ rules:
   - DOMAIN-SUFFIX,jules.google,🤖G-AI🎯
   - DOMAIN-SUFFIX,stitch.withgoogle.com,🤖G-AI🎯
   - DOMAIN-SUFFIX,search.google,🤖G-AI🎯
+  - DOMAIN-SUFFIX,notebooklm.google.com,🤖G-AI🎯
   - DOMAIN-SUFFIX,grok.com,🤖Grok🎯
   - DOMAIN-SUFFIX,x.ai,🤖Grok🎯
   - RULE-SET,ACLtwitch,👾Twitch🎯
@@ -3623,6 +3624,16 @@ rules:
   - DOMAIN-SUFFIX,deepseek.com,🤖AI🎯
   - DOMAIN-SUFFIX,qwen.ai,🤖AI🎯
   - DOMAIN-SUFFIX,suno.com,🤖AI🎯
+  - DOMAIN-SUFFIX,copilot.microsoft.com,🤖AI🎯
+  - DOMAIN-SUFFIX,mistral.ai,🤖AI🎯
+  - DOMAIN-SUFFIX,poe.com,🤖AI🎯
+  - DOMAIN-SUFFIX,midjourney.com,🤖AI🎯
+  - DOMAIN-SUFFIX,ideogram.ai,🤖AI🎯
+  - DOMAIN-SUFFIX,firefly.adobe.com,🤖AI🎯
+  - DOMAIN-SUFFIX,elevenlabs.io,🤖AI🎯
+  - DOMAIN-SUFFIX,runwayml.com,🤖AI🎯
+  - DOMAIN-SUFFIX,replit.com,🤖AI🎯
+  - DOMAIN-SUFFIX,kling.ai,🤖AI🎯
   - RULE-SET,category-ai,🤖AI🎯
   - RULE-SET,censor,🤬censorMovie🎯
   - PROCESS-NAME,com.anydesk.anydeskandroid,💻AnyDesk🎯
