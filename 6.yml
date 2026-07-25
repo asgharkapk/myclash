@@ -3597,6 +3597,7 @@ rules:
   - GEOSITE,linkedin,💼LinkedIn🎯
   - DOMAIN-SUFFIX,deepseek.com,🤖AI🎯
   - DOMAIN-SUFFIX,qwen.ai,🤖AI🎯
+  - DOMAIN-SUFFIX,suno.com,🤖AI🎯
   - RULE-SET,category-ai,🤖AI🎯
   - RULE-SET,censor,🤬censorMovie🎯
   - PROCESS-NAME,com.anydesk.anydeskandroid,💻AnyDesk🎯
