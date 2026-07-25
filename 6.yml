@@ -1231,21 +1231,6 @@ proxy-groups:
       - 🏁Countries
       - 🩸Drop
       - ⛓️‍💥SkipRules
-  - name: 🤖G-AI🎯
-    type: select
-    icon: https://www.svgrepo.com/show/535603/robot.svg
-    proxies:
-      - 🌐Proxy
-      - 🔓Direct
-      - ⛔Block
-      - ⤵️FirstPing
-      - 🦽Manual
-      - 🔐consistent-hashing       
-      - 🔃round-robin       
-      - 🕎sticky-sessions
-      - 🏁Countries
-      - 🩸Drop
-      - ⛓️‍💥SkipRules
   - name: 🤖Grok🎯
     type: select
     icon: https://www.svgrepo.com/show/535603/robot.svg
@@ -2342,7 +2327,6 @@ proxy-groups:
       - 🔵Telegram🎯
       - 🤖OpenAI🎯
       - 🐦Twitter🎯
-      - 🤖G-AI🎯
       - 🤖Grok🎯
       - 👾Twitch🎯
       - ☁️Cloudflare🎯
@@ -3589,16 +3573,6 @@ rules:
   - RULE-SET,C4Utwitter,🐦Twitter🎯
   - RULE-SET,mihTwitter,🐦Twitter🎯
   - RULE-SET,Domtwitter,🐦Twitter🎯
-  - DOMAIN-SUFFIX,ai.google,🤖G-AI🎯
-  - DOMAIN-SUFFIX,gemini.google.com,🤖G-AI🎯
-  - DOMAIN-SUFFIX,deepmind.google,🤖G-AI🎯
-  - DOMAIN-SUFFIX,aistudio.google.com,🤖G-AI🎯
-  - DOMAIN-SUFFIX,labs.google,🤖G-AI🎯
-  - DOMAIN-SUFFIX,makersuite.google.com,🤖G-AI🎯
-  - DOMAIN-SUFFIX,jules.google,🤖G-AI🎯
-  - DOMAIN-SUFFIX,stitch.withgoogle.com,🤖G-AI🎯
-  - DOMAIN-SUFFIX,search.google,🤖G-AI🎯
-  - DOMAIN-SUFFIX,notebooklm.google.com,🤖G-AI🎯
   - DOMAIN-SUFFIX,grok.com,🤖Grok🎯
   - DOMAIN-SUFFIX,x.ai,🤖Grok🎯
   - RULE-SET,ACLtwitch,👾Twitch🎯
