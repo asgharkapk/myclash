@@ -3730,7 +3730,8 @@ rules:
   - GEOSITE,linkedin,💼LinkedIn🎯
   - DOMAIN-SUFFIX,deepseek.com,🤖AI🎯
   - DOMAIN-SUFFIX,qwen.ai,🤖AI🎯
-  - RULE-SET,category-ai-!cn,🤖AI🎯
+  - RULE-SET,category-ai,🤖AI🎯
+  - GEOSITE,category-ai-!cn,🤖AI🎯
   - RULE-SET,censor,🤬censorMovie🎯
   - PROCESS-NAME,com.anydesk.anydeskandroid,💻AnyDesk🎯
   - PROCESS-NAME,AnyDesk.exe,💻AnyDesk🎯
