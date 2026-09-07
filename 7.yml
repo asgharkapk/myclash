@@ -1332,17 +1332,17 @@ proxy-groups:
   - name: 🤗HuggingFace🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: 🤖Grok🎯
     type: select
     icon: https://www.svgrepo.com/show/535603/robot.svg
