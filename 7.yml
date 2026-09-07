@@ -1141,8 +1141,8 @@ proxy-groups:
   - name: 🎨Perchance-image🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
