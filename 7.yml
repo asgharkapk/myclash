@@ -1127,101 +1127,101 @@ proxy-groups:
   - name: 🧠Perchance-text🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: 🎨Perchance-image🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: 📤Perchance-upload🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: 💬Perchance-comments🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: 🔌Perchance-server🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: 🔄Perchance-fetch🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: 📦Perchance-useruploads🎯
     type: select
     proxies:
-      - 🌐Proxy
       - 🔓Direct
+      - 🌐Proxy
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
-      - 🔐consistent-hashing
-      - 🔃round-robin
+      - 🔐consistent-hashing       
+      - 🔃round-robin       
       - 🕎sticky-sessions
       - 🏁Countries
       - 🩸Drop
-      - ⛓️💥SkipRules
+      - ⛓️‍💥SkipRules
   - name: ☁️Cloudflare🎯
     type: select
     icon: https://www.svgrepo.com/show/331337/cloudflare.svg
