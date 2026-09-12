@@ -1,4 +1,3 @@
-global-client-fingerprint: chrome
 
 port: 7890
 socks-port: 7891
@@ -53,16 +52,16 @@ dns:
 
   default-nameserver:
     - 8.8.8.8
-    - 8.8.4.4
+    - 1.1.1.1
   nameserver:
-    - 1.1.1.1
-    - 1.0.0.1
-  direct-nameserver:
-    - 1.1.1.1
     - 8.8.8.8
-  proxy-server-nameserver:
     - 1.1.1.1
-    - 8.8.8.8    
+  direct-nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+  proxy-server-nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
     - https://cloudflare-dns.com/dns-query
     - tls://one.one.one.one
     - one.one.one.one
@@ -690,8 +689,8 @@ proxy-groups:
     type: select
     icon: https://www.svgrepo.com/show/439191/http-2.svg
     proxies:
-      - 🔃round-robin
       - ⤵️FirstPing
+      - 🔃round-robin
       - 🦽Manual
       - 🦽Launam
       - ♻️gstatic
@@ -1097,8 +1096,8 @@ proxy-groups:
     type: select
     icon: https://www.svgrepo.com/show/452133/whatsapp.svg
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
@@ -1170,8 +1169,8 @@ proxy-groups:
     type: select
     #icon: https://www.svgrepo.com/show/331337/cloudflare.svg
     proxies:
-      - ⤵️FirstPing
       - 🌐Proxy
+      - ⤵️FirstPing
       - 🔓Direct
       - ⛔Block
       - 🦽Manual
@@ -1188,8 +1187,8 @@ proxy-groups:
   - name: 🧠Perchance-org🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
@@ -1205,8 +1204,8 @@ proxy-groups:
   - name: 🧠Perchance-helper🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
@@ -1256,8 +1255,8 @@ proxy-groups:
   - name: 📤upload.perchance.org🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
@@ -1273,8 +1272,8 @@ proxy-groups:
   - name: 💬Perchance-comments🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
@@ -1290,8 +1289,8 @@ proxy-groups:
   - name: 🔌Perchance-server🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
@@ -1307,8 +1306,8 @@ proxy-groups:
   - name: 🔄Perchance-fetch🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
@@ -1324,8 +1323,8 @@ proxy-groups:
   - name: 📦user.uploads.dev🎯
     type: select
     proxies:
-      - 🔓Direct
       - 🌐Proxy
+      - 🔓Direct
       - ⛔Block
       - ⤵️FirstPing
       - 🦽Manual
